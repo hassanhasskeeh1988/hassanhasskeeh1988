@@ -1,0 +1,12 @@
+# PowerShell script to create a registry key for Docker Desktop
+
+$path = "HKLM:\SOFTWARE\Policies\Docker\Docker Desktop"
+
+# Check if the key exists
+if (-not (Test-Path $path)) {
+    # Create the registry key
+    New-Item -Path $path -Force
+    Write-Output "Registry key created: $path"
+} else {
+    Write-Output "Registry key already exists: $path"
+}
